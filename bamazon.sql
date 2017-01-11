@@ -24,5 +24,9 @@ INSERT into products(product_name,department_name,price,stock_quantity)
           ("Pokemon Wave Slasher Theme Deck","Toys & Games",13.50,75),
           ("Catan 5th Edition","Toys & Games",34.49,307),
           ("The Life and Times of the Thunderbolt Kid: A Memoir","Books",10.02,3789);
-          
+
+INSERT into products(product_name,department_name,price,stock_quantity)
+	VALUES("Shaymin-EX","Toys & Games",49.99,3);
+
 SELECT * FROM products;
+Select * FROM products WHERE stock_quantity < 5;

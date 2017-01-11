@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "",
+  password: "Suicytwo2",
   database: "bamazon"
 });
 
@@ -77,6 +77,8 @@ var checkOut = function(itemId,quantity){
 				}],
 				function(err, res) {
 					console.log("Purchase placed successfully!");
+					var totalCost = quantity*productsArray[0].price;
+					console.log("Your total cost: " + totalCost);
 				});
 		}
 		else {
@@ -86,104 +88,3 @@ var checkOut = function(itemId,quantity){
 		console.log("-----------------------------------");
 	});
 }
-
-// * A query which returns all data for songs sung by a specific artist
-// function findByArtist(){
-// 	inquirer.prompt([
-// 		{
-// 			name: "artistname",
-// 			type: "input",
-// 			message: "Please enter an artist name."
-// 		}
-// 	]).then(function(answer) {
-// 		connection.query("Select * FROM top5000 WHERE artist=?", [answer.artistname], function(err,res){
-// 			var songArray = res;
-// 			console.log("-----------------------------------");
-// 			console.log("Artist: " + answer.artistname);
-// 			for (var i = 0; i < songArray.length ; i++){
-// 				console.log("\nSong title: " + songArray[i].song);
-// 				console.log("Song rank (USA): " + songArray[i].raw_usa);
-// 			}
-// 			console.log("-----------------------------------");
-// 		});
-// 	});
-// }
-
-// //findByArtist();
-
-// // * A query which returns all artists who appear within the top 5000 more than once
-// function findArtistsWithMultipleSongs(){
-// 	connection.query("Select artist FROM top5000 GROUP BY artist HAVING ( COUNT(*) > 1 )", [], function(err,res){
-// 		var artistArray = res;
-// 		console.log(res);
-// 		console.log("-----------------------------------");
-// 		for (var i = 0; i < artistArray.length ; i++){
-// 			console.log("Artist: " + res[i].artist);
-// 			console.log("-----------------------------------");
-// 		}
-// 	});
-// }
-
-// //findArtistsWithMultipleSongs();
-
-// // * A query which returns all data contained within a specific range
-// function findSongsByRange(){
-// 	inquirer.prompt([
-// 		{
-// 			name: "lower",
-// 			type: "input",
-// 			message: "Please enter a lower range."
-// 		},
-// 		{
-// 			name: "upper",
-// 			type: "input",
-// 			message: "Please enter an upper range."
-// 		}
-// 	]).then(function(answer) {
-// 		connection.query("Select * FROM top5000 WHERE position BETWEEN ? AND ?", [answer.lower,answer.upper], function(err,res){
-// 			var songArray = res;
-// 			console.log("-----------------------------------");
-// 			//console.log("Artist: " + artist);
-// 			for (var i = 0; i < songArray.length ; i++){
-// 				console.log("Song title: " + songArray[i].song);
-// 				console.log("Song rank (USA): " + songArray[i].raw_usa);
-// 			console.log("-----------------------------------");
-// 			}
-// 		});
-// 	});
-// }
-
-// //findSongsByRange(2,3);
-
-// // * A query which searches for a specific song in the top 5000 and returns the data for it
-// function findSongByTitle(){
-// 	inquirer.prompt([
-// 		{
-// 			name: "title",
-// 			type: "input",
-// 			message: "Please enter a song title."
-// 		}
-// 	]).then(function(answer) {
-// 		connection.query("Select * FROM top5000 WHERE song=?", [answer.title], function(err,res){
-// 			if (err) throw err;
-				
-// 			var songData = res;
-
-// 			if (songData.length === 0){
-// 				console.log("This song was not found in the top 5000:");
-// 				console.log(answer.title);	
-// 			}
-// 			else{
-// 				console.log("-----------------------------------");
-// 				for (var i = 0; i < songData.length ; i++){
-// 					console.log("Song title: " + songData[i].song);
-// 					console.log("Song artist: " + songData[i].artist);
-// 					console.log("Song rank (USA): " + songData[i].raw_usa);
-// 				}
-// 				console.log("-----------------------------------");
-// 			}
-// 		});
-// 	});
-// }
-
-// //findSongByTitle("Whenever, Wherever");

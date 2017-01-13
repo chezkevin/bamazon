@@ -1,6 +1,8 @@
+// require the necessary libraries
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
+// set up connection to database
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -9,10 +11,11 @@ var connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "Suicytwo2",
+  password: "",
   database: "bamazon"
 });
 
+// if err, display error. Else, display store for customer
 connection.connect(function(err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
@@ -31,6 +34,7 @@ var displayItems = function(){
 	});
 }
 
+// prompt user for id of item and quantity to purchase
 var runSearch = function(){
 	inquirer.prompt([
 		{
@@ -62,6 +66,7 @@ var runSearch = function(){
 	})
 }
 
+// update database if patient's purchase is feasible
 var checkOut = function(itemId,quantity){
 	connection.query("Select * FROM products WHERE item_id=?", [itemId], function(err,res){
 		var productsArray = res;

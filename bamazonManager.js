@@ -1,6 +1,8 @@
+// require the necessary libraries
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
+// set up connection to database
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -9,16 +11,19 @@ var connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "Suicytwo2",
+  password: "",
   database: "bamazon"
 });
 
+// if able to connect, prompt manager choices
+// else, throw error
 connection.connect(function(err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
   runSearch();
 });
 
+// this contains the tree of choices for manager
 var runSearch = function() {
   inquirer.prompt({
     name: "action",
@@ -49,6 +54,7 @@ var runSearch = function() {
 };
 
 var displayItems = function(){
+	// second parameter not necessary since we are selecting all columns from table
 	connection.query("Select * FROM products", [], function(err,res){
 		var productArray = res;
 		console.log("-----------------------------------");
@@ -70,6 +76,7 @@ var viewLowInventory = function(){
 	});
 }
 
+// prompt manager for id and quantity of item to update
 var addToInventory = function(){
 	displayItems();
 	inquirer.prompt([
@@ -118,6 +125,7 @@ var addToInventory = function(){
 	})
 }
 
+// prompt manager for properties of new item to add
 var addNewProduct = function(){
 	inquirer.prompt([{
 		name: "item",

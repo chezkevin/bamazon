@@ -1,4 +1,9 @@
 # bamazon
+# Instructions
+# 1: in BamazonCustomer.js and BamazonManager.js, add the password for "root" hooked up to a SQL database with a products table
+# 2: Verify that you are able to connect by running "node BamazonCustomer.js" or "node BamazonManager.js." The app will tell you if it is able to connect.
+# 3: After you connect, each app will offer you choices for what you want to do. Follow the path from here.
+# Below are screenshots outlining the different workflows for each app.
 # Part 1.1: Database before making a purchase
 ![Database pre-purchase](/images/part1_1_customer_pre_purchase.PNG)
 # Part 1.2: Making a purchase from node
